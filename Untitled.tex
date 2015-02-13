@@ -1,0 +1,87 @@
+\documentclass[]{article}
+\usepackage{amsmath}
+\usepackage{hyperref}
+
+
+\begin{document}
+
+\title{HUL315 Assignment 2}
+\author{Robin Malhotra}
+\date{February 13,2015}
+\maketitle
+
+\section{Q1: Find E \big[X\big] for Lognormal and Logistic distribution} 
+
+\subsection{Lognormal}
+
+A Lognormal distribution is defined such that:-
+\begin{equation}\label{first}X \sim LN(\mu, \sigma^2)\\
+\end{equation}if
+\begin{subequations}\label{grp}\begin{gather}X=e^Y\label{second}\\Y\sim N(\mu,\sigma^2)\end{gather}\end{subequations}
+
+To derive the Expected Value, we need to first figure out the probability distribution function.
+
+\begin{center}
+ $
+    \begin{aligned}[t]
+	Prob(X<k)=Prob(e^Y<k)\\
+=Prob(Y<log(K))\\
+= \int_{-\infty}^{log(k)} \frac{1}{\sqrt{2\pi}\sigma}e^\frac{-(y-\mu)^2}{2\sigma^2} dy\\
+= \int_{-\infty}^{k} \frac{1}{x\sqrt{2\pi}\sigma}e^\frac{-(log(x)-\mu)^2}{2\sigma^2} dx\\
+\end{aligned}
+$
+\end{center}
+Now, for the expected value. We will use a substitution of $y=x-\mu,dy=dx$
+\begin{center}
+ $
+    \begin{aligned}[t]
+	E(Y)=E(e^X)= \int_{-\infty}^{\infty} \frac{1}{\sqrt{2\pi}\sigma}e^\frac{-(x-\mu)^2}{2\sigma^2} dx\\
+	=\int_{-\infty}^{\infty}e^{y+\mu} \frac{1}{\sqrt{2\pi}\sigma}e^\frac{-y^2}{2\sigma^2} dy\\
+	={e^\mu}\int_{-\infty}^{\infty}e^{y} \frac{1}{\sqrt{2\pi}\sigma}e^\frac{-y^2}{2\sigma^2} dy
+\end{aligned}
+$
+
+\end{center}
+This integration is fairly trivial and can be performed by converting $y-\frac{y^2}{2\sigma^2}$ to the closest square.
+So, we end up with
+\begin{center}
+ $
+    \begin{aligned}[t]
+	{e^\mu}{e^\frac{\sigma^2}{2}}=e^{\mu+\frac{\sigma^2}{2}}
+\end{aligned}
+$
+\end{center}
+Now, for E\big[$X^2$\big], which, after subtracting from the expected value, will return the Variance. We will continue to use the same substitutions and the same integration results.
+\begin{center}
+ $
+    \begin{aligned}[t]
+	E(Y^2)=E(e^{2X})=\int_{-\infty}^{\infty}e^{2x} \frac{1}{\sqrt{2\pi}\sigma}e^\frac{-(x-\mu)^2}{2\sigma^2} dx\\
+	=\int_{-\infty}^{\infty}e^{2(y+\mu)} \frac{1}{\sqrt{2\pi}\sigma}e^\frac{-(y)^2}{2\sigma^2} dx\\
+	=e^{2\mu+2\sigma^2}
+\end{aligned}
+$
+\end{center}
+\begin{center}
+ $
+    \begin{aligned}[t]
+	
+\end{aligned}
+$
+\end{center}
+\section{Q2:Give an example where covariance of 2 random variables but not independant}
+
+I found a great example of this on \href{http://stats.stackexchange.com/questions/12842/covariance-and-independence}{crossValidated, the statistics StackExchange forum}. It goes as follows:-
+
+Take a random variable $X$ with $E\big[X\big]=0$ and $E\big[X^3\big]=0$, for example a normal distribution with zero mean. Take $Y=X^2$. Clearly, X and Y are dependant. But,
+\begin{equation}
+cov(X,Y)=E\big[XY\big]-E\big[X\big]E\big[Y\big]=E\big[X^3\big]=0
+\end{equation} 
+
+Praise be the gentle humans of StackExchange!
+
+\section{Q3:}
+
+
+
+
+\end{document}
